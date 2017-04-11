@@ -18,9 +18,9 @@ import static java.security.AccessController.getContext;
 
 public class Cannonball implements Animator
 {
-	private final float GRAVITY = 9.8f;
+	private double GRAVITY = 9.8f;
 	private int VELOCITY = 100;
-	private final int MAX_Y = 1500;
+	private int MAX_Y;
 	private int count = 0;
 	private double angle = 50 * 3.14 / 180;
 	private	int newX = 0;
@@ -28,7 +28,15 @@ public class Cannonball implements Animator
 	private int oldX = 250;
 	private int oldY = 1150;
 	private boolean fired = false;
+	private boolean fire = true;
+	private int radius =60;
+	private Paint grey = new Paint();
+	private Paint outline = new Paint();
 
+	public Cannonball(int maxY){
+		this.MAX_Y = maxY;
+	}
+	
 	//sets the interval
 	@Override
 	public int interval()
@@ -61,23 +69,34 @@ public class Cannonball implements Animator
 	@Override
 	public void tick(Canvas canvas)
 	{
+		grey.setColor(Color.GRAY);
+		outline.setStyle(Paint.Style.STROKE);
 		if(fired) {
-			count++;
+			if (fire) {
+				count++;
 
-			if(count > 1)
-			{
-				oldX = newX;
-				oldY = newY;
+				if (count > 1) {
+					oldX = newX;
+					oldY = newY;
+				}
+
+				newX = (int) (VELOCITY * Math.cos(angle) * count);
+				newY = (int) (-((VELOCITY * Math.sin(angle) * count) - (0.5 * GRAVITY * count * count)));
+
+				// Draw the ball in the correct position.
+
+
+				canvas.drawCircle(250 + newX, MAX_Y - 350 + newY, radius, grey);
+				canvas.drawCircle(250 + newX, MAX_Y - 350 + newY, radius, outline);
+				if (newY >= 50) {
+					fired = false;
+					fire=false;
+				}
 			}
-			
-			newX = (int)(VELOCITY * Math.cos(angle) * count);
-			newY = (int)(-((VELOCITY * Math.sin(angle) * count) - (0.5 * GRAVITY * count * count)));
-
-			// Draw the ball in the correct position.
-			Paint redPaint = new Paint();
-			redPaint.setColor(Color.GRAY);
-			canvas.drawCircle(250 + newX, MAX_Y-350 + newY, 60, redPaint);
-			if(newY >= MAX_Y){fired = false;}
+		}
+		else if(!fire && !fired){
+			canvas.drawCircle(250 + newX, MAX_Y - 350 + newY, radius, grey);
+			canvas.drawCircle(250 + newX, MAX_Y - 350 + newY, radius, outline);
 		}
 	}
 
@@ -91,7 +110,9 @@ public class Cannonball implements Animator
 	//sets the new angle
 	public void setAngle(double newAngle)
 	{
-		this.angle = newAngle;
+		if(!fired) {
+			this.angle = newAngle;
+		}
 	}
 
 	//makes a new cannonball shot
@@ -130,5 +151,25 @@ public class Cannonball implements Animator
 	public int getOldY()
 	{
 		return oldY;
+	}
+
+	public boolean getFired()
+	{
+		return fired;
+	}
+
+	public boolean getFire()
+	{
+		return fire;
+	}
+
+	public void setGravity(double gravity)
+	{
+		this.GRAVITY = gravity;
+	}
+
+	public int getRadius()
+	{
+		return radius;
 	}
 }

@@ -14,27 +14,28 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
         <TextView
             android:id="@+id/AngleWord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Angle:"/>
-
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:text="Angle:"
+            android:textColor="@android:color/black"/>
 
         <SeekBar
             android:id="@+id/Angle"
-            android:layout_width="300dp"
+            android:layout_width="225dp"
             android:layout_height="50dp"
             android:max="90"
             android:progress="50"/>
 
         <Space
-            android:layout_width="25dp"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
@@ -43,10 +44,11 @@
             android:layout_width="25dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="50°"/>
+            android:text="50°"
+            android:textColor="@android:color/black"/>
 
         <Space
-            android:layout_width="25dp"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
@@ -55,23 +57,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Velocity:"/>
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:text="Velocity:"
+            android:textColor="@android:color/black"/>
 
         <SeekBar
             android:id="@+id/Velocity"
-            android:layout_width="300dp"
+            android:layout_width="225dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:max="200"
             android:progress="100"/>
 
         <Space
-            android:layout_width="wrap_content"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
@@ -80,18 +78,61 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="100mph"/>
+            android:text="100mph"
+            android:textColor="@android:color/black"/>
 
         <Space
-            android:layout_width="25dp"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/Gravity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Gravity:"
+            android:textColor="@android:color/black"/>
+
+        <SeekBar
+            android:id="@+id/GavitySeekBar"
+            android:layout_width="225dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:max="196"
+            android:progress="98"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/GravityText"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="9.8"
+            android:textColor="@android:color/black"/>
 
         <Button
             android:id="@+id/FIRE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="FIRE"/>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/Balls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Shots: 10"
+            android:textColor="@android:color/black"/>
     </LinearLayout>
 
 </LinearLayout>
